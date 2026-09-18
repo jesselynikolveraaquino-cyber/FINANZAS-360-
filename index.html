@@ -2,32 +2,25 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#172033">
 <title>Finanzas 360°</title>
 <style>
-*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:#eef2f7;color:#172033}
-.app{max-width:430px;margin:auto;min-height:100vh;background:#fff}
-header{padding:22px 20px 14px;background:#172033;color:white;border-radius:0 0 24px 24px}
-header h1{margin:0;font-size:25px} header p{margin:6px 0 0;opacity:.8}
-main{padding:18px 16px 88px}.card{background:white;border:1px solid #e4e8ef;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 4px 14px #00000008}
-.balance{font-size:30px;font-weight:700;margin:7px 0}.muted{color:#697386;font-size:13px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{padding:16px;border-radius:16px;background:#f5f7fa;border:0;text-align:left;cursor:pointer;font-weight:700}.tile span{display:block;font-size:25px;margin-bottom:8px}
-.progress{height:9px;background:#e8ecf2;border-radius:20px;overflow:hidden}.bar{height:100%;width:58%;background:#172033;border-radius:20px}
-button.primary{border:0;background:#172033;color:#fff;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer}
-input,select{width:100%;padding:12px;border:1px solid #d7dce5;border-radius:10px;margin:6px 0 10px}
-.lesson{padding:13px;border-left:4px solid #172033;background:#f7f8fa;border-radius:8px;margin:8px 0}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(430px,100%);background:white;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:9px 4px}.nav button{border:0;background:none;font-size:11px;color:#667085;cursor:pointer}.nav button b{display:block;font-size:19px;margin-bottom:3px}
-.hidden{display:none}.tag{display:inline-block;padding:5px 8px;background:#eef1f5;border-radius:20px;font-size:11px;margin:2px}
-.result{font-size:20px;font-weight:700;margin-top:5px}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eef2f7;color:#172033}.app{max-width:480px;margin:auto;min-height:100vh;background:#fff}
+header{padding:24px 20px 18px;background:#172033;color:#fff;border-radius:0 0 26px 26px}header h1{margin:0;font-size:26px}header p{margin:6px 0 0;opacity:.8}
+main{padding:18px 16px 90px}.card{background:#fff;border:1px solid #e4e8ef;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 5px 18px #0000000a}.hero{background:#f5f7fa}.balance{font-size:32px;font-weight:800;margin:7px 0}.muted{color:#697386;font-size:13px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{padding:13px;border-radius:14px;background:#f7f8fa}.stat b{display:block;font-size:18px;margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{padding:15px;border-radius:16px;background:#f5f7fa;border:1px solid #e7eaf0;text-align:left;cursor:pointer;font-weight:700;color:#172033}.tile span{display:block;font-size:25px;margin-bottom:7px}
+.progress{height:9px;background:#e8ecf2;border-radius:20px;overflow:hidden}.bar{height:100%;background:#172033;border-radius:20px}.lesson{padding:13px;border-left:4px solid #172033;background:#f7f8fa;border-radius:8px;margin:8px 0}
+input,select{width:100%;padding:12px;border:1px solid #d7dce5;border-radius:10px;margin:6px 0 10px;font-size:15px}button.primary{border:0;background:#172033;color:#fff;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer}button.danger{border:0;background:#f1f3f6;padding:7px 10px;border-radius:9px;cursor:pointer}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);background:#fff;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:8px 4px;z-index:5}.nav button{border:0;background:none;font-size:10px;color:#667085;cursor:pointer}.nav button b{display:block;font-size:18px;margin-bottom:3px}.hidden{display:none}.tag{display:inline-block;padding:5px 8px;background:#eef1f5;border-radius:20px;font-size:11px;margin:2px}.result{font-size:20px;font-weight:700;margin-top:10px}.quiz button{display:block;width:100%;margin:7px 0;text-align:left}.success{padding:10px;border-radius:10px;background:#f0f3f6}.small{font-size:12px}
 </style>
 </head>
 <body>
 <div class="app">
 <header><h1>FINANZAS 360°</h1><p>Aprende, organiza y crece</p></header>
-
 <main>
 <section id="inicio">
-<div class="card"><div class="muted">Mi saldo disponible</div><div class="balance" id="saldo">S/ 850.00</div><div class="muted">Controla tus ingresos y gastos desde un solo lugar.</div></div>
+<div class="card hero"><div class="muted">Mi saldo disponible</div><div class="balance" id="saldo">S/ 850.00</div><div class="stats"><div class="stat"><span class="muted">Ingresos</span><b id="ingresos">S/ 0.00</b></div><div class="stat"><span class="muted">Gastos</span><b id="totalGastos">S/ 0.00</b></div></div></div>
 <div class="grid">
 <button class="tile" onclick="show('aprende')"><span>📚</span>Aprende</button>
 <button class="tile" onclick="show('gastos')"><span>💰</span>Mis gastos</button>
@@ -36,57 +29,63 @@ input,select{width:100%;padding:12px;border:1px solid #d7dce5;border-radius:10px
 <button class="tile" onclick="show('sistema')"><span>🏦</span>Sistema financiero</button>
 <button class="tile" onclick="show('fintech')"><span>📱</span>Fintech</button>
 </div>
-<div class="card"><b>Meta: Fondo de emergencia</b><p class="muted">S/ 580 de S/ 1,000</p><div class="progress"><div class="bar"></div></div></div>
+<div class="card"><div class="row"><b>🎯 Fondo de emergencia</b><span class="small" id="metaPct">58%</span></div><p class="muted" id="metaTexto">S/ 580 de S/ 1,000</p><div class="progress"><div class="bar" id="metaBar" style="width:58%"></div></div></div>
+<div class="card"><b>💡 Consejo</b><p class="muted">Registrar tus gastos te ayuda a identificar en qué utilizas tu dinero y planificar mejor.</p></div>
 </section>
 
-<section id="aprende" class="hidden"><h2>Aprende</h2>
+<section id="aprende" class="hidden"><h2>📚 Aprende</h2>
 <div class="card"><span class="tag">Cultura financiera</span><h3>¿Qué es?</h3><p>Es el conjunto de conocimientos y hábitos que ayudan a tomar decisiones sobre el dinero, el ahorro y el uso de servicios financieros.</p></div>
 <div class="lesson"><b>1. Presupuesto</b><br><span class="muted">Registra ingresos y gastos para conocer cómo utilizas tu dinero.</span></div>
 <div class="lesson"><b>2. Ahorro</b><br><span class="muted">Define una meta y separa una cantidad de manera periódica.</span></div>
-<div class="lesson"><b>3. Crédito</b><br><span class="muted">Antes de solicitarlo, revisa tasas, cuotas, plazo y costo total.</span></div>
-<div class="lesson"><b>4. Seguridad</b><br><span class="muted">Protege tus claves y verifica siempre la información antes de realizar operaciones.</span></div>
+<div class="lesson"><b>3. Crédito</b><br><span class="muted">Antes de solicitarlo, revisa tasa, cuotas, plazo y costo total.</span></div>
+<div class="lesson"><b>4. Seguridad financiera</b><br><span class="muted">Protege tus claves y verifica siempre la información antes de realizar operaciones.</span></div>
+<div class="card quiz"><b>🧠 Mini quiz</b><p>¿Qué conviene revisar antes de aceptar un crédito?</p><button class="tile" onclick="quiz(false)">Solo el monto recibido</button><button class="tile" onclick="quiz(true)">Tasa, cuota, plazo y costo total</button><button class="tile" onclick="quiz(false)">Solo la publicidad</button><p id="quizMsg" class="muted"></p></div>
 </section>
 
-<section id="gastos" class="hidden"><h2>Mis gastos</h2>
-<div class="card"><label>Concepto</label><input id="concepto" placeholder="Ej. Transporte"><label>Monto</label><input id="monto" type="number" step="0.01" placeholder="0.00"><button class="primary" onclick="agregarGasto()">Agregar gasto</button></div>
-<div class="card"><b>Movimientos</b><div id="lista"></div></div>
+<section id="gastos" class="hidden"><h2>💰 Mis gastos</h2>
+<div class="card"><label>Concepto</label><input id="concepto" placeholder="Ej. Transporte"><label>Monto</label><input id="monto" type="number" min="0" step="0.01" placeholder="0.00"><label>Categoría</label><select id="categoria"><option>Alimentación</option><option>Transporte</option><option>Estudios</option><option>Entretenimiento</option><option>Otros</option></select><button class="primary" onclick="agregarGasto()">Agregar gasto</button></div>
+<div class="card"><div class="row"><b>Movimientos</b><span class="muted" id="contador"></span></div><div id="lista"></div></div>
 </section>
 
-<section id="metas" class="hidden"><h2>Mis metas</h2>
-<div class="card"><h3>Fondo de emergencia</h3><p>S/ 580 de S/ 1,000</p><div class="progress"><div class="bar"></div></div><p class="muted">58% completado</p></div>
-<div class="card"><h3>Mi primera meta</h3><input id="metaNombre" placeholder="Nombre de la meta"><input id="metaMonto" type="number" placeholder="Monto objetivo"><button class="primary" onclick="crearMeta()">Crear meta</button><p id="metaMsg"></p></div>
+<section id="metas" class="hidden"><h2>🎯 Mis metas</h2>
+<div class="card"><h3>Fondo de emergencia</h3><p id="metaDetalle">S/ 580 de S/ 1,000</p><div class="progress"><div class="bar" id="metaBar2" style="width:58%"></div></div><p class="muted">Ahorra de forma periódica y revisa tu avance.</p></div>
+<div class="card"><h3>Crear una meta</h3><input id="metaNombre" placeholder="Nombre de la meta"><input id="metaMonto" type="number" min="1" placeholder="Monto objetivo"><button class="primary" onclick="crearMeta()">Crear meta</button><div id="metasLista"></div></div>
 </section>
 
-<section id="calculadora" class="hidden"><h2>Calculadora financiera</h2>
+<section id="calculadora" class="hidden"><h2>🧮 Calculadora</h2>
 <div class="card"><label>Capital</label><input id="capital" type="number" value="1000"><label>Tasa mensual (%)</label><input id="tasa" type="number" value="1"><label>Meses</label><input id="meses" type="number" value="12"><button class="primary" onclick="calcular()">Calcular interés compuesto</button><div class="result" id="resultado"></div></div>
 </section>
 
-<section id="sistema" class="hidden"><h2>Sistema financiero</h2>
-<div class="card"><h3>¿Cómo acceder?</h3><p>Conoce opciones como cuentas, ahorro, crédito, seguros y medios de pago. Compara condiciones y verifica que la entidad sea formal.</p></div>
+<section id="sistema" class="hidden"><h2>🏦 Sistema financiero</h2>
+<div class="card"><h3>¿Cómo acceder a sus beneficios?</h3><p>Conoce opciones como cuentas, ahorro, crédito, seguros y medios de pago. Compara condiciones y verifica que la entidad sea formal.</p></div>
 <div class="grid"><div class="card"><b>🏦 Ahorro</b><p class="muted">Guarda dinero y establece objetivos.</p></div><div class="card"><b>💳 Crédito</b><p class="muted">Revisa tasa, cuota y costo total.</p></div><div class="card"><b>🛡️ Seguros</b><p class="muted">Protección frente a determinados riesgos.</p></div><div class="card"><b>💻 Digital</b><p class="muted">Realiza operaciones mediante canales digitales.</p></div></div>
 </section>
 
-<section id="fintech" class="hidden"><h2>Fintech</h2>
+<section id="fintech" class="hidden"><h2>📱 Fintech</h2>
 <div class="card"><h3>¿Qué son?</h3><p>Fintech combina tecnología y servicios financieros para ofrecer soluciones como pagos, transferencias, crédito, inversiones y herramientas de gestión financiera.</p></div>
-<div class="card"><b>¿Por qué son importantes?</b><p>Permiten explorar servicios financieros digitales y pueden facilitar el acceso y uso de herramientas financieras, especialmente mediante canales tecnológicos.</p></div>
+<div class="card"><b>¿Por qué son importantes?</b><p>Las soluciones digitales pueden facilitar el acceso y uso de herramientas financieras mediante canales tecnológicos.</p></div>
 </section>
 </main>
-
-<nav class="nav">
-<button onclick="show('inicio')"><b>⌂</b>Inicio</button>
-<button onclick="show('aprende')"><b>📚</b>Aprende</button>
-<button onclick="show('gastos')"><b>💰</b>Gastos</button>
-<button onclick="show('metas')"><b>🎯</b>Metas</button>
-<button onclick="show('fintech')"><b>📱</b>Fintech</button>
-</nav>
+<nav class="nav"><button onclick="show('inicio')"><b>⌂</b>Inicio</button><button onclick="show('aprende')"><b>📚</b>Aprende</button><button onclick="show('gastos')"><b>💰</b>Gastos</button><button onclick="show('metas')"><b>🎯</b>Metas</button><button onclick="show('calculadora')"><b>🧮</b>Calcula</button><button onclick="show('fintech')"><b>📱</b>Fintech</button></nav>
 </div>
-
 <script>
+let data=JSON.parse(localStorage.getItem('finanzas360')||'null')||{saldo:850,ingresos:0,gastos:[],metas:[],puntos:0};
+function save(){localStorage.setItem('finanzas360',JSON.stringify(data));render()}
+function money(n){return 'S/ '+Number(n).toFixed(2)}
 function show(id){document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0)}
-let saldo=850;
-function agregarGasto(){const c=document.getElementById('concepto').value,m=Number(document.getElementById('monto').value);if(!c||!m||m<=0)return;saldo-=m;document.getElementById('saldo').textContent='S/ '+saldo.toFixed(2);const d=document.createElement('div');d.className='lesson';d.innerHTML='<b>'+c+'</b><br><span class="muted">Gasto: S/ '+m.toFixed(2)+'</span>';document.getElementById('lista').prepend(d);document.getElementById('concepto').value='';document.getElementById('monto').value=''}
-function calcular(){const c=Number(document.getElementById('capital').value),r=Number(document.getElementById('tasa').value)/100,n=Number(document.getElementById('meses').value);const total=c*Math.pow(1+r,n);document.getElementById('resultado').innerHTML='Monto final: S/ '+total.toFixed(2)+'<br><span class="muted">Interés acumulado: S/ '+(total-c).toFixed(2)+'</span>'}
-function crearMeta(){const n=document.getElementById('metaNombre').value,m=document.getElementById('metaMonto').value;if(n&&m)document.getElementById('metaMsg').textContent='Meta creada: '+n+' — S/ '+Number(m).toFixed(2)}
+function render(){
+document.getElementById('saldo').textContent=money(data.saldo);document.getElementById('ingresos').textContent=money(data.ingresos);
+const total=data.gastos.reduce((a,g)=>a+g.monto,0);document.getElementById('totalGastos').textContent=money(total);document.getElementById('contador').textContent=data.gastos.length+' movimiento'+(data.gastos.length===1?'':'s');
+const lista=document.getElementById('lista');lista.innerHTML='';data.gastos.slice().reverse().forEach((g,i)=>{const real=data.gastos.length-1-i;const d=document.createElement('div');d.className='lesson';d.innerHTML='<div class="row"><b>'+escapeHtml(g.concepto)+'</b><button class="danger" onclick="eliminarGasto('+real+')">Eliminar</button></div><span class="muted">'+escapeHtml(g.categoria)+' · '+money(g.monto)+'</span>';lista.appendChild(d)});
+const ml=document.getElementById('metasLista');ml.innerHTML='';data.metas.forEach(m=>{const d=document.createElement('div');d.className='lesson';d.innerHTML='<b>'+escapeHtml(m.nombre)+'</b><br><span class="muted">Objetivo: '+money(m.monto)+'</span>';ml.appendChild(d)});
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function agregarGasto(){const c=document.getElementById('concepto').value.trim(),m=Number(document.getElementById('monto').value),cat=document.getElementById('categoria').value;if(!c||m<=0){alert('Completa el concepto y un monto válido.');return}data.gastos.push({concepto:c,monto:m,categoria:cat});data.saldo-=m;save();document.getElementById('concepto').value='';document.getElementById('monto').value=''}
+function eliminarGasto(i){data.saldo+=data.gastos[i].monto;data.gastos.splice(i,1);save()}
+function crearMeta(){const n=document.getElementById('metaNombre').value.trim(),m=Number(document.getElementById('metaMonto').value);if(!n||m<=0){alert('Completa los datos de la meta.');return}data.metas.push({nombre:n,monto:m});save();document.getElementById('metaNombre').value='';document.getElementById('metaMonto').value=''}
+function calcular(){const c=Number(document.getElementById('capital').value),r=Number(document.getElementById('tasa').value)/100,n=Number(document.getElementById('meses').value);if(c<0||r<0||n<0)return;const total=c*Math.pow(1+r,n);document.getElementById('resultado').innerHTML='Monto final: '+money(total)+'<br><span class="muted">Interés acumulado: '+money(total-c)+'</span>'}
+function quiz(ok){document.getElementById('quizMsg').textContent=ok?'¡Correcto! +10 puntos':'Revisa la lección sobre crédito.';if(ok){data.puntos+=10;save()}}
+render();
 </script>
 </body>
 </html>
